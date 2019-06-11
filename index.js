@@ -1,6 +1,6 @@
-import '@babel/polyfill';
+// import '@babel/polyfill';
 import 'element-qsa-scope';
-import dragula from 'dragula';
+// import dragula from 'dragula';
 import LiveRegion from 'live-region';
 import createDebug from 'debug';
 import Emitter from 'component-emitter';
@@ -10,11 +10,11 @@ import queryAll from './lib/query-all';
 
 const debug = createDebug('drag-on-drop:index');
 const arrayHandler = (containers, userOptions = {}) => {
-  const { nested, dragulaOptions = {} } = userOptions;
+  const { nested /* , dragulaOptions = {}*/ } = userOptions;
   const instances = [];
 
   containers.forEach(container => {
-    instances.push(new DragonDrop(container, userOptions, nested));
+    instances.push(new KeyboardDrop(container, userOptions, nested));
   });
 
   if (nested) {
@@ -35,7 +35,7 @@ const arrayHandler = (containers, userOptions = {}) => {
     const lists = Array.from(containers);
     lists.shift(); // remove the top-most conatainer
 
-    const topLevelDragula = dragula([topMost], {
+    /* const topLevelDragula = dragula([topMost], {
       ...dragulaOptions,
       moves: (_, __, handle) => !lists.find(l => l.contains(handle))
     });
@@ -57,13 +57,13 @@ const arrayHandler = (containers, userOptions = {}) => {
 
     instances.forEach((inst, i) => {
       inst.dragula = i === 0 ? topLevelDragula : nestedDragula;
-    });
+    });*/
   }
 
   return instances;
 };
 
-export default class DragonDrop {
+export default class KeyboardDrop {
   /**
    * Dragon Drop
    * @param  {HTMLElement} container - The containing list
@@ -111,14 +111,14 @@ export default class DragonDrop {
 
     if (!nested) {
       // if handle is truthy, pass this info along with
-      const dragulaOpts = handle && {
+      /* const dragulaOpts = handle && {
         moves: (_, __, h) => matches(h, handle)
       };
       // init mouse drag via dragula
       this.dragula = dragula([container], {
         ...userOptions.dragulaOptions,
         ...dragulaOpts
-      });
+      }); */
     }
 
     // init live region for custom announcements
@@ -329,7 +329,7 @@ export default class DragonDrop {
   mouseEvents() {
     const { nested } = this.options;
 
-    if (!nested) {
+    /* if (!nested) {
       this.dragula.on('drag', el => {
         this.announcement('grabbed', el);
       });
@@ -337,7 +337,7 @@ export default class DragonDrop {
       this.dragula.on('drop', el => {
         this.announcement('dropped', el).setItems();
       });
-    }
+    } */
 
     return this;
   }
@@ -360,4 +360,4 @@ export default class DragonDrop {
 }
 
 // make window.DragonDrop available rather than window.DragonDrop.default
-module.exports = DragonDrop;
+// module.exports = KeyboardDrop;

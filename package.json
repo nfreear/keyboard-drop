@@ -1,25 +1,18 @@
 {
-  "name": "drag-on-drop",
-  "version": "3.3.2",
+  "private": true,
+  "name": "keyboard-drop",
+  "version": "4.0.0",
   "description": "Accessible drag and drop list reorder",
-  "main": "dist/dragon-drop.js",
+  "main": "dist/main.js",
   "scripts": {
-    "build": "npm run pre-build && npm run bundle && npm run bundle:min && npm run demo",
-    "bundle": "browserify index.js -o dist/dragon-drop.js --standalone DragonDrop -t [ babelify --presets [ env stage-0 ] ]",
-    "bundle:min": "browserify -g uglifyify index.js -o dist/dragon-drop.min.js --standalone DragonDrop -t [ babelify --presets [ env stage-0 ] ]",
-    "clean": "rm -rf dist/",
-    "demo": "mkdir dist/demo && cp-dir ./demo ./dist/demo",
-    "deploy": "gh-pages -m 'auto commit [ci skip]' -d dist/",
-    "dev": "watch-run -p 'lib/**,demo/**,index.js' npm run build",
-    "pre-build": "npm run clean && mkdir dist",
-    "test": "npm run test:coverage && npm run lint",
-    "test:coverage": "nyc --reporter=text npm run test:run",
-    "test:run": "tape -r babel-register test/index.js | tap-spec",
-    "lint": "eslint ."
+    "build": "webpack --config lib/webpack.config.js",
+    "bundle": "# browserify index.js -o dist/dragon-drop.js --standalone DragonDrop -t [ babelify --presets [ env stage-0 ] ]",
+    "lint": "eslint .",
+    "test": "# Todo"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/schne324/dragon-drop.git"
+    "url": "git+https://github.com/nfreear/dragon-drop.git"
   },
   "author": "Harris Schneiderman",
   "license": "MIT",
@@ -28,33 +21,20 @@
   },
   "homepage": "https://github.com/schne324/dragon-drop#readme",
   "devDependencies": {
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "babelify": "^7.3.0",
-    "browserify": "^14.4.0",
-    "cp-dir": "^1.0.3",
     "debug": "^3.0.0",
     "eslint": "^4.19.1",
-    "gh-pages": "^1.0.0",
-    "jsdom": "^11.2.0",
-    "jsdom-global": "^3.0.2",
-    "nyc": "^11.6.0",
-    "proxyquire": "^2.1.0",
-    "simulant": "^0.2.2",
-    "sinon": "^6.1.5",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "uglifyify": "^4.0.3",
-    "watch-run": "^1.2.5"
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
     "component-emitter": "^1.2.1",
     "dom-matches": "^2.0.0",
-    "dragula": "^3.7.2",
     "element-qsa-scope": "^1.0.1",
     "live-region": "^1.0.2",
     "optimal-select": "^4.0.1"
+  },
+  "peerDependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "dragula": "^3.7.2"
   }
 }

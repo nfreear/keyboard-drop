@@ -6,20 +6,22 @@ body {
 }
 
 h1 {
-  font-family: 'Poiret One', cursive;
+  font-family: sans-serif, 'Poiret One', cursive;
   font-size: 5em;
+  font-weight: 400;
   text-align: center;
   margin: 10px 0;
 }
 
 header {
-  background: #7654C4;
+  background: #666; /* Was: #7654C4; */
   color: #fff;
   padding: 40px;
   text-align: center;
 }
 
 header img {
+  x-display: none;
   width: 200px;
 }
 

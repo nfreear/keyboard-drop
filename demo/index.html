@@ -2,15 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Dragon Drop</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Poiret+One" rel="stylesheet">
+    <title>Keyboard (Dragon) Drop</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Poiret+One" rel="X-stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/rainbow-code/themes/css/monokai.css">
     <link href="https://use.fontawesome.com/2c7f755026.css" media="all" rel="stylesheet">
     <link rel="stylesheet" href="./demo.css">
   </head>
   <body>
     <header>
-      <h1>DRAGON DROP</h1>
+      <h1>KEYBOARD <del>DRAGON</del> DROP</h1>
       <img role="presentation" src="./dragon_drop_logo.svg">
       <h2>Accessible drag-and-drop list reorder plugin</h2>
       <a href="https://github.com/schne324/dragon-drop" target="_blank" aria-label="View on github" class="fa fa-github"></a>
@@ -62,10 +62,10 @@
         </ol>
         <pre>
           <code data-language="js">
-    import DragonDrop from 'drag-on-drop';
+    import KeyboardDrop from 'keyboard-drop';
 
     const demo1 = document.getElementById('demo-1');
-    const dragonDrop = new DragonDrop(demo1, {
+    const dragonDrop = new KeyboardDrop.default(demo1, {
       handle: '.handle',
       announcement: {
         grabbed: el => `${el.querySelector('span').innerText} grabbed`,
@@ -176,10 +176,11 @@
       <div class="live-log" id="live-log"></div>
     </main>
     <script src="https://unpkg.com/rainbow-code/dist/rainbow.min.js"></script>
-    <script src="../dragon-drop.js"></script>
+    <script src="../dist/main.js"></script>
+    <!-- <script src="../dragon-drop.js"></script> -->
     <script>
       var liveLog = document.getElementById('live-log');
-      var demo1 = new DragonDrop(document.getElementById('demo-1'), {
+      var demo1 = new KeyboardDrop.default(document.getElementById('demo-1'), {
         handle: '.handle',
         announcement: {
           grabbed: function (el) { return el.querySelector('span').innerText + ' grabbed'; },
@@ -211,7 +212,7 @@
         .on('announcement', onAnnouncement)
         .on('cancel', function () { console.log('Reordering cancelled'); });
 
-      var demo2 = new DragonDrop(document.getElementById('demo-2'), {
+      var demo2 = new KeyboardDrop.default(document.getElementById('demo-2'), {
         handle: false,
         announcement: {
           grabbed: function (el) { return el.querySelector('div').innerText + ' grabbed' },
@@ -228,7 +229,7 @@
       demo2.on('announcement', onAnnouncement);
 
       var demo3lists = Array.prototype.slice.call(document.querySelectorAll('#demo-3, .sublist'));
-      var demo3Dragons = new DragonDrop(demo3lists, {
+      var demo3Dragons = new KeyboardDrop.default(demo3lists, {
         handle: false,
         nested: true,
         item: ':scope > li',

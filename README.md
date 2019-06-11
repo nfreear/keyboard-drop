@@ -1,8 +1,12 @@
-# Dragon Drop
+# Keyboard <del>Dragon</del> Drop
+
+[![Build Status][travis-icon]][travis]
 
 [![CircleCI](https://circleci.com/gh/schne324/dragon-drop.svg?style=svg)](https://circleci.com/gh/schne324/dragon-drop)
 
 Keyboard/assistive technology accessible drag-and-drop reorder list.
+
+_A fork of [@shne324's][shne324] [dragon-drop][], without the '`Dragula`' dependency._
 
 <img alt="Dragon Drop" src="/demo/dragondrop_sticker.png" width="400" />
 
@@ -33,15 +37,15 @@ $ bower install drag-on-drop
 ### Browserify/Webpack
 
 ```js
-import DragonDrop from 'drag-on-drop';
+import KeyboardDrop from 'keyboard-drop';
 
-const dragon = new DragonDrop(container, options);
+const dragon = new KeyboardDrop(container, options);
 ```
 
 ### In the browser
 
 ```js
-const DragonDrop = window.DragonDrop;
+const KeyboardDrop = window.KeyboardDrop;
 const dragon = new DragonDrop(container, options);
 ```
 
@@ -90,7 +94,7 @@ https://unpkg.com/drag-on-drop
 
 ## API
 
-### `new DragonDrop(container, [options])`
+### `new KeyboardDrop(container, [options])`
 
 #### `container` _HTMLElement|Array_ (required)
 
@@ -287,3 +291,10 @@ For more information regarding accessibility you can read an [accessibility revi
 A special thanks to Aaron Pearlman for the logo.
 
 Another special thanks to contributors/maintainers of [dragula](https://github.com/bevacqua/dragula) which is used for all of the mouse behavior/interaction for dragon drop!
+
+
+[shne324]: https://github.com/schne324 "Harris Schneiderman"
+[dragon-drop]: https://github.com/schne324/dragon-drop
+
+[travis]: https://travis-ci.org/nfreear/keyboard-drop
+[travis-icon]: https://travis-ci.org/nfreear/keyboard-drop.svg?branch=master

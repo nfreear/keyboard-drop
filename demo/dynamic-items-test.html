@@ -11,10 +11,11 @@
       <li>Baz</li>
     </ul>
     <button id="add" type='button'>Add Item</button>
-    <script src="../dragon-drop.js"></script>
+    <script src="../dist/main.js"></script>
+    <!-- <script src="../dragon-drop.js"></script> -->
     <script>
       var dragon = document.getElementById('dragon');
-      var dragonDrop = new DragonDrop(dragon, { handle: false });
+      var dragonDrop = new KeyboardDrop.default(dragon, { handle: false });
       var add = document.getElementById('add');
       var added = 1;
 
