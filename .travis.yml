@@ -1,4 +1,10 @@
 
+# os: linux
+
+dist: xenial # Faster.
+
+sudo: false
+
 language: node_js
 
 node_js: 11
@@ -11,3 +17,5 @@ git:
 before_script: npm run build
 
 script: npm run lint
+
+after_script: ls -alh dist

@@ -2,8 +2,8 @@
   "private": true,
   "name": "keyboard-drop",
   "version": "4.0.0",
-  "description": "Accessible drag and drop list reorder",
-  "main": "dist/main.js",
+  "description": "Accessible drag and drop list reorder. (Fork with no 'Dragula' dependency)",
+  "main": "dist/keyboard-drop.js",
   "scripts": {
     "build": "webpack --config lib/webpack.config.js",
     "bundle": "# browserify index.js -o dist/dragon-drop.js --standalone DragonDrop -t [ babelify --presets [ env stage-0 ] ]",
@@ -32,9 +32,8 @@
     "live-region": "^1.0.2",
     "optimal-select": "^4.0.1"
   },
-  "x-Dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "dom-matches": "^2.0.0",
-    "dragula": "^3.7.2"
+  "peerDependencies": {
+    "dragula": "^3.7.2",
+    "sortablejs": "^1.10.0"
   }
 }

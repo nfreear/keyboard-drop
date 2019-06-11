@@ -9,7 +9,7 @@ import queryAll from './lib/query-all';
 
 const debug = createDebug('drag-on-drop:index');
 const arrayHandler = (containers, userOptions = {}) => {
-  const { nested /* , dragulaOptions = {}*/ } = userOptions;
+  const { nested /* Was:, dragulaOptions = {} */ } = userOptions;
   const instances = [];
 
   containers.forEach(container => {
@@ -34,14 +34,7 @@ const arrayHandler = (containers, userOptions = {}) => {
     const lists = Array.from(containers);
     lists.shift(); // remove the top-most conatainer
 
-    /* const topLevelDragula = dragula([topMost], {
-      ...dragulaOptions,
-      moves: (_, __, handle) => !lists.find(l => l.contains(handle))
-    });
-
-    ...
-
-    */
+    // Was: const topLevelDragula = dragula([topMost], { ...
   }
 
   return instances;
@@ -91,14 +84,7 @@ export default class KeyboardDrop {
     this.handledHandles = [];
     this.initOptions(userOptions);
 
-    const { nested } = this.options;
-
-    if (!nested) {
-      // if handle is truthy, pass this info along with
-      /* const dragulaOpts = handle && {
-
-      ... */
-    }
+    // Was: const { nested } = this.options; ...
 
     // init live region for custom announcements
     this.liveRegion = new LiveRegion({
@@ -306,6 +292,7 @@ export default class KeyboardDrop {
   }
 
   mouseEvents() {
+    // Was: ...
     return this;
   }
 
@@ -326,5 +313,5 @@ export default class KeyboardDrop {
   }
 }
 
-// make window.DragonDrop available rather than window.DragonDrop.default
-// module.exports = KeyboardDrop;
+// make window.KeyboardDrop available rather than window.KeyboardDrop.default
+// Was: module.exports = KeyboardDrop;
