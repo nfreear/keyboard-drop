@@ -272,8 +272,8 @@ export default class KeyboardDrop {
     target.focus();
     this
       .setItems()
-      // new ~ added final three callback parameters
-      .emit('reorder', this.container, oldItem, newItem, index, adjacentIndex, isUp ? 'up' : 'down')
+      // new ~ added final three callback parameters (not 'newItem')
+      .emit('reorder', this.container, oldItem, index, adjacentIndex, isUp ? 'up' : 'down')
       .announcement('reorder', oldItem);
 
     return this;
