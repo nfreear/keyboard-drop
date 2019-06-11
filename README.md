@@ -6,7 +6,7 @@
 
 Keyboard/assistive technology accessible drag-and-drop reorder list.
 
-_A fork of [@shne324's][shne324] [dragon-drop][], without the '`Dragula`' dependency._
+_A fork of [@shne324's][shne324] [`dragon-drop`][], without the '`Dragula`' dependency._
 
 <img alt="Dragon Drop" src="/demo/dragondrop_sticker.png" width="400" />
 
@@ -46,7 +46,7 @@ const dragon = new KeyboardDrop(container, options);
 
 ```js
 const KeyboardDrop = window.KeyboardDrop;
-const dragon = new DragonDrop(container, options);
+const dragon = new KeyboardDrop(container, options);
 ```
 
 ### React
@@ -57,12 +57,12 @@ Although a DragonDrop react component doesn't exist (yet), it can be used _with_
 class App extends Component {
   componentDidMount() {
     this.setState({
-      dragonDrop: new DragonDrop(this.dragon)
+      keyboardDrop: new KeyboardDrop(this.dragon)
     });
   }
 
   componentDidUpdate() {
-    const { dragonDrop } = this.state;
+    const { keyboardDrop } = this.state;
     // this public method allows dragon drop to
     // reassess the updated items and handles
     dragonDrop.initElements(this.dragon);
@@ -134,13 +134,13 @@ The class to be added to all of the other items when an item is being dragged. D
 
 ##### `nested` _Boolean_
 
-Set to true if nested lists are being used (click and keydown events will not bubble up (`e.stopPropagation()` will be applied)). For nested lists, you MUST pass `DragonDrop` an array of containers as the 1st parameter (see example below).
+Set to true if nested lists are being used (click and keydown events will not bubble up (`e.stopPropagation()` will be applied)). For nested lists, you MUST pass `KeyboardDrop` an array of containers as the 1st parameter (see example below).
 
 __NOTE:__ *there is a 99% chance that you'll need to use [:scope selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) to target only a given list's items (because dragon drop would otherwise include the sub list's items for example). Using `:scope` selectors will allow you to target direct descendant children (example: `:scope > li`).*
 
 ```js
 const lists = Array.from(document.querySelectorAll('.dragon-list'));
-const dragons = new DragonDrop(lists, {
+const dragons = new KeyboardDrop(lists, {
   nested: true,
   handle: false,
   item: ':scope > li' // IMPORTANT! a selector that targets only a single list's items
@@ -203,7 +203,7 @@ The function called when the reorder is cancelled (via ESC). No arguments passed
 ## Properties
 
 ```js
-const dragonDrop = new DragonDrop(container);
+const dragonDrop = new KeyboardDrop(container);
 ```
 ### `dragonDrop.items` _Array_
 
@@ -221,7 +221,7 @@ A direct handle on the `dragula` instance created by `dragonDrop`
 
 ```js
 const list = document.getElementById('dragon-list');
-const dragonDrop = new DragonDrop(list, {
+const keyboardDrop = new KeyboardDrop(list, {
   item: 'li',
   handle: '.handle',
   announcement: {
@@ -294,7 +294,7 @@ Another special thanks to contributors/maintainers of [dragula](https://github.c
 
 
 [shne324]: https://github.com/schne324 "Harris Schneiderman"
-[dragon-drop]: https://github.com/schne324/dragon-drop
+[`dragon-drop`]: https://github.com/schne324/dragon-drop
 
 [travis]: https://travis-ci.org/nfreear/keyboard-drop
 [travis-icon]: https://travis-ci.org/nfreear/keyboard-drop.svg?branch=master

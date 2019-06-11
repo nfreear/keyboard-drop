@@ -28,13 +28,13 @@
   },
   "dependencies": {
     "component-emitter": "^1.2.1",
-    "dom-matches": "^2.0.0",
     "element-qsa-scope": "^1.0.1",
     "live-region": "^1.0.2",
     "optimal-select": "^4.0.1"
   },
-  "peerDependencies": {
+  "x-Dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "dom-matches": "^2.0.0",
     "dragula": "^3.7.2"
   }
 }

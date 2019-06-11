@@ -1,10 +1,9 @@
-// import '@babel/polyfill';
+
 import 'element-qsa-scope';
-// import dragula from 'dragula';
 import LiveRegion from 'live-region';
 import createDebug from 'debug';
 import Emitter from 'component-emitter';
-import matches from 'dom-matches';
+// import matches from 'dom-matches';
 import defaults from './lib/defaults';
 import queryAll from './lib/query-all';
 
@@ -40,24 +39,9 @@ const arrayHandler = (containers, userOptions = {}) => {
       moves: (_, __, handle) => !lists.find(l => l.contains(handle))
     });
 
-    topLevelDragula.on('drag', onDrag);
-    topLevelDragula.on('drop', onDrop);
+    ...
 
-    const nestedDragula = dragula(lists, {
-      ...dragulaOptions,
-      accepts: (el, target, source) => {
-        // TODO: when `options.locked` is implemented...
-        // if (!options.locked) { return true }
-        return target === source;
-      }
-    });
-
-    nestedDragula.on('drag', onDrag);
-    nestedDragula.on('drop', onDrop);
-
-    instances.forEach((inst, i) => {
-      inst.dragula = i === 0 ? topLevelDragula : nestedDragula;
-    });*/
+    */
   }
 
   return instances;
@@ -65,7 +49,7 @@ const arrayHandler = (containers, userOptions = {}) => {
 
 export default class KeyboardDrop {
   /**
-   * Dragon Drop
+   * Keyboard Drop
    * @param  {HTMLElement} container - The containing list
    * @param  {Object} userOptions - The user provided options
    *
@@ -107,18 +91,13 @@ export default class KeyboardDrop {
     this.handledHandles = [];
     this.initOptions(userOptions);
 
-    const { handle, nested } = this.options;
+    const { nested } = this.options;
 
     if (!nested) {
       // if handle is truthy, pass this info along with
       /* const dragulaOpts = handle && {
-        moves: (_, __, h) => matches(h, handle)
-      };
-      // init mouse drag via dragula
-      this.dragula = dragula([container], {
-        ...userOptions.dragulaOptions,
-        ...dragulaOpts
-      }); */
+
+      ... */
     }
 
     // init live region for custom announcements
@@ -327,18 +306,6 @@ export default class KeyboardDrop {
   }
 
   mouseEvents() {
-    const { nested } = this.options;
-
-    /* if (!nested) {
-      this.dragula.on('drag', el => {
-        this.announcement('grabbed', el);
-      });
-
-      this.dragula.on('drop', el => {
-        this.announcement('dropped', el).setItems();
-      });
-    } */
-
     return this;
   }
 
