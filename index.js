@@ -216,31 +216,32 @@ export default class KeyboardDrop {
     const { target, which } = e;
     const isDrag = () => target.getAttribute('data-drag-on') === 'true';
 
+    // https://w3.org/TR/2014/WD-DOM-Level-3-Events-20140925/#legacy-key-models
     switch (which) {
-      case 13:
-      case 32:
+      case 13: // 'Enter'
+      case 32: // 'Space'
         if (nested) { e.stopPropagation(); }
         e.preventDefault();
         target.click();
 
         break;
-      case 37:
+      case 37: // 'ArrowLeft'
       case 38:
       case 39:
-      case 40:
+      case 40: // 'ArrowDown'
         if (isDrag()) {
           e.preventDefault();
           this.arrow(which, target);
         }
 
         break;
-      case 9:
+      case 9: // 'Tab'
         if (isDrag()) {
           target.click();
         }
 
         break;
-      case 27:
+      case 27: // 'Escape'
         if (isDrag()) {
           target.click();
           this.cancel();
@@ -271,7 +272,8 @@ export default class KeyboardDrop {
     target.focus();
     this
       .setItems()
-      .emit('reorder', this.container, oldItem)
+      // new ~ added final three callback parameters
+      .emit('reorder', this.container, oldItem, newItem, index, adjacentIndex, isUp ? 'up' : 'down')
       .announcement('reorder', oldItem);
 
     return this;

@@ -20,6 +20,12 @@ header {
   text-align: center;
 }
 
+header del {
+  color: #ddd;
+  font-weight: 300;
+  font-style: italic;
+}
+
 header img {
   x-display: none;
   width: 200px;
